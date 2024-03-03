@@ -1,34 +1,47 @@
 function askNumber(){
-    let givenNumber = 'a';
-    while (isNaN(givenNumber)){
-        givenNumber = parseInt(prompt("Please enter a number"));
-        if (isNaN(givenNumber)){
-            alert("That's not a number");
+    let numberP2;
+    do {
+        numberP2 = parseInt(prompt("Player 2 : Try to guess the player 1 number"));
+        if (isNaN(numberP2)){
+            alert("It's not a number");
         }
-    }
-    return givenNumber;
+    } while (isNaN(numberP2))
+    return numberP2;
 }
-function didIWin(givenNumber, goodNumber){
-    if (givenNumber < goodNumber){
-        alert("Plus grand");
+
+function didIWin(givenNumber, toGuessNumber){
+    if (givenNumber < toGuessNumber){
+        alert("bigger");
         return false;
     }
-    else if (givenNumber > goodNumber){
-        alert("Plus petit");
+    else if (givenNumber > toGuessNumber){
+        alert("smaller");
         return false;
     }
-    else {
-        alert("Bravo ! Vous avez deviné le nombre");
+    else{
+        alert("Congrats' ! You guessed the number");
         return true;
     }
 }
 
+function askNumberToGuess(){
+    let toGuessNumber = 51;
+    while (toGuessNumber < 0 || toGuessNumber > 50 || isNaN(toGuessNumber)){
+        toGuessNumber = parseInt(prompt("Player 1 : Please enter a number between 0 and 50", "0 < ? < 50"));
+        if (toGuessNumber < 0 || toGuessNumber > 50 || isNaN(toGuessNumber)){
+            alert("it's not a number or the number is outside of the range (between 0 to 50)");
+        }
+    }
+    return(toGuessNumber);
+}
+
 function gamePlay(){
-    let givenNumber;
-    let goodNumber = 22;
+    const toGuessNumber = askNumberToGuess();
+    let givenNumber = 0;
     do {
         givenNumber = askNumber();
-    } while (didIWin(givenNumber, goodNumber) === false)
+    } while (didIWin(givenNumber, toGuessNumber) === false)
+
 }
 
 gamePlay();
