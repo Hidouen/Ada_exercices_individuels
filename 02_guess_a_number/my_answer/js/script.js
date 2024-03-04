@@ -41,7 +41,9 @@ function gamePlay(){
     let givenNumber = 0;
     let attempts = 0;
     let result = false;
-
+    let minval = 0;
+    let maxval = 50;
+    document.getElementById("to_do").innerText = "Player 2, try to guess the player 1 number (between " + minval + " and " + maxval + ") :";
     document.getElementById("GuessTheNumber").addEventListener("submit", function(event) {
         event.preventDefault(); // Pour empêcher le rechargement de la page
         givenNumber = parseInt(document.getElementById("givenNumber").value);
@@ -49,6 +51,13 @@ function gamePlay(){
         if (result === false){
             attempts++;
             document.getElementById("attempts").innerHTML = "False. Attempts = " + attempts;
+            if (givenNumber > minval && givenNumber < toGuessNumber){
+                minval = givenNumber;
+            }
+            else if (givenNumber > toGuessNumber && givenNumber < maxval){
+                maxval = givenNumber;
+            }
+            document.getElementById("to_do").innerText = "Player 2, try to guess the player 1 number (between " + minval + " and " + maxval + ") :";
         }
         else{
             document.getElementById("attempts").innerHTML = "TRUE ! Congratulations !";
