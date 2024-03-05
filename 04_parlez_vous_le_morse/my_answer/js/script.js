@@ -39,12 +39,30 @@ function getLatinCharacterList(str){
     return tab;
 }
 
-function displayResult(letter){
-    letter = letter.toUpperCase();
-    console.log(letter);
-    let message = "'" + letter + "' character in morse code is '" + translateLatinCharacter(letter) + "'";
+function isALetter(caractere) {
+    return /[A-Z]/.test(caractere);
+}
+
+function encode(str){
+    let tabStr = getLatinCharacterList(str);
+    let strInMorse = "\n";
+    for (i = 0; i < tabStr.length; i++){
+        if (isALetter(tabStr[i])){
+            strInMorse += translateLatinCharacter(tabStr[i]);
+            strInMorse += ' ';
+        }
+        else if (tabStr[i] === ' '){
+            strInMorse += '\n';
+        }
+    }
+    return strInMorse;
+}
+
+function displayResult(str){
+    str = str.toUpperCase();
+    let message = '"' + str + '" in morse code is :' + encode(str);
     document.body.innerHTML += '<h3 id="answer"></h3>';
     document.getElementById("answer").innerText = message;
 }
 
-displayResult('A');
+displayResult("Hello World");
