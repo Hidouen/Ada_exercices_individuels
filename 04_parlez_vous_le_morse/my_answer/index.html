@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>04_Parlez_vous_le_morse</title>
+        <title>Morse Translator</title>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
 
-        <h1>Ada Tech School</h1>
-        <h2>Step 4</h2>
+        <h1>Ada Tech School (ex04 step 5)</h1>
+        
+        <h2>Morse Encoder/Decoder</h2>
+
+        <h3>Encode (from text to Morse)</h3>
+        <input type="text" id="textToEncode" placeholder="Enter text to encode">
+        <button onclick="encodeText()">Encode</button>
+        <p>Result in morse: <span id="encodedResult"></span></p>
+    
+        <h3>Decode (from Morse to text)</h3>
+        <input type="text" id="morseToDecode" placeholder="Enter Morse to decode">
+        <button onclick="decodeMorse()">Decode</button>
+        <p>Result in text: <span id="decodedResult"></span></p>
 
         <script src="js/script.js"></script>
     </body>

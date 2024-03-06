@@ -62,7 +62,7 @@ function gamePlay(){
         else{
             document.getElementById("attempts").innerHTML = "TRUE ! Congratulations !";
         }
-      });
+    });
 }
 
 gamePlay();

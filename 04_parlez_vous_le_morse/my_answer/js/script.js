@@ -24,7 +24,17 @@ const latinToMorse = {
 	'W':'.--',
 	'X':'-..-',
 	'Y':'-.--',
-	'Z':'--..'
+	'Z':'--..',
+    '0':'-----',
+    '1':'.----',
+    '2':'..---',
+    '3':'...--',
+    '4':'....-',
+    '5':'.....',
+    '6':'-....',
+    '7':'--...',
+    '8':'---..',
+    '9':'----.'
 }
 
 const morseToLatin = {
@@ -53,99 +63,51 @@ const morseToLatin = {
     '..-.': "F",
     '...': "S",
     '...-': "V",
-    '....': "H"
+    '....': "H",
+    '-----':"0",
+    '.----':"1",
+    '..---':"2",
+    '...--':"3",
+    '....-':"4",
+    '.....':"5",
+    '-....':"6",
+    '--...':"7",
+    '---..':"8",
+    '----.':"9"
   }
 
-function translateLatinCharacter(letter){
-    return latinToMorse[letter];
-}
+function encodeText() {
+    const textToEncode = document.getElementById('textToEncode').value.toUpperCase();
+    let encodedText = "";
 
-function getLatinCharacterList(str){
-    let tab = [];
-    for (i = 0; i < str.length; i++){
-        tab[i] = str[i];
+    for (let i = 0; i < textToEncode.length; i++) {
+        const char = textToEncode[i];
+        if (char === ' ') {
+            encodedText += '/';
+        } else if (latinToMorse[char]) {
+            encodedText += latinToMorse[char] + ' ';
+        }
     }
-    return tab;
+
+    document.getElementById('encodedResult').textContent = encodedText;
 }
 
-function translateMorseCharacter(str){
-    return morseToLatin[str];
-}
+function decodeMorse() {
+    const morseToDecode = document.getElementById('morseToDecode').value;
+    const morseWords = morseToDecode.split('/');
 
-function getMorseCharacterList(str){
-    let tab = [];
-    let j = 0;
-    let k = 1;
-    for (i = 0; i < str.length; i++){
-        if (str[i] === '.' || str[i] === '-'){
-            tab[j] = str[i];
-            k = 1;
-            if (i + k < str.length && (str[i + k] === '.' || str[i + k] === '-')){
-                while (str[i + k] === '.' || str[i + k] === '-'){
-                    tab[j] += str[i + k];
-                    k++;
-                }
-                i += k;
-            }
-            j++;
-        }
-        else if (str[i] === ' '){
-            ;
-        }
-        else if (str[i] === '/'){
-            if (j > 0){
-                if (tab[j - 1] != " "){
-                    tab[j] = " ";
-                    j++;
-                }
+    let decodedText = "";
+
+    for (let i = 0; i < morseWords.length; i++) {
+        const morseChars = morseWords[i].trim().split(' ');
+        for (let j = 0; j < morseChars.length; j++) {
+            const char = morseToLatin[morseChars[j]];
+            if (char) {
+                decodedText += char;
             }
         }
-        else {
-            tab[j] = "$";
-            j++;
-        }
+        decodedText += ' ';
     }
-    return tab;
+
+    document.getElementById('decodedResult').textContent = decodedText.trim();
 }
-
-
-function isALetter(caractere) {
-    return /[A-Z]/.test(caractere);
-}
-
-function encode(str){
-    let strInMorse = "";
-    let tabStr = getLatinCharacterList(str);
-    for (i = 0; i < tabStr.length; i++){
-        if (isALetter(tabStr[i])){
-            strInMorse += translateLatinCharacter(tabStr[i]);
-            strInMorse += ' ';
-        }
-        else if (tabStr[i] === ' '){
-            strInMorse += '/';
-        }
-    }
-    return strInMorse;
-}
-
-function decode(str){
-    let latinStr = "";
-    let tabStr = getMorseCharacterList(str);
-    for (i = 0; i < tabStr.length; i++){
-        if (tabStr[i] === " "){
-            latinStr += tabStr[i];
-        }
-        else if (isALetter(translateMorseCharacter(tabStr[i]))){
-            latinStr += translateMorseCharacter(tabStr[i]);
-        }
-    }
-    return latinStr;
-}
-
-function displayResult(str){
-    let message = '"' + str + '" in Latin characters is : "' + decode(str) + '"';
-    document.body.innerHTML += '<h3 id="answer"></h3>';
-    document.getElementById("answer").innerText = message;
-}
-
-displayResult(".... . .-.. .-.. --- /.-- --- .-. .-.. -..");
