@@ -17,5 +17,19 @@ function sum2(tab, i) {
 
     return result;
 }
-const nbrs_tab = [1, 2, 7];
-console.log(sum2(nbrs_tab, 0));
+
+function factorial(n) {
+    if (n < 1) {
+        return 0;
+    }
+    if (n > 1) {
+        return (n * factorial(n - 1));
+    }
+    else {
+        return n;
+    }
+}
+
+// const nbrs_tab = [1, 2, 7];
+// console.log(sum2(nbrs_tab, 0));
+console.log(factorial(3));
