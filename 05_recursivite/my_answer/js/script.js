@@ -1,5 +1,8 @@
 function sum1(tab) {
     let result = 0;
+    if (!Array.isArray(tab)) {
+        return tab;
+    }
     for (let i = 0; i < tab.length; i++) {
         result += tab[i];
     }
@@ -7,12 +10,13 @@ function sum1(tab) {
 }
 
 function sum2(tab) {
+    if (!Array.isArray(tab)) {
+        return tab;
+    }
     if (tab.length === 0) {
         return 0;
     }
-    else {
-        return tab[0] + sum2(tab.slice(1));
-    }
+    return tab[0] + sum2(tab.slice(1));
 }
 
 function factorial(n) {
@@ -22,18 +26,14 @@ function factorial(n) {
     else if (n === 0) {
         return 1;
     }
-    else {
-        return (n * factorial(n - 1));
-    }
+    return (n * factorial(n - 1));
 }
 
 function fibonacci(x) {
     if (x <= 1 || isNaN(x)) {
         return x;
     }
-    else {
-        return fibonacci(x - 1) + fibonacci(x - 2);
-    }
+    return fibonacci(x - 1) + fibonacci(x - 2);
 }
 
 const nbrs_tab = [1, 2, 3];
