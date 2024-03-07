@@ -19,17 +19,32 @@ function sum2(tab, i) {
 }
 
 function factorial(n) {
-    if (n < 1) {
+    if (n < 0) {
         return 0;
     }
-    if (n > 1) {
-        return (n * factorial(n - 1));
+    else if (n === 0) {
+        return 1;
     }
     else {
-        return n;
+        return (n * factorial(n - 1));
     }
 }
 
-// const nbrs_tab = [1, 2, 7];
-// console.log(sum2(nbrs_tab, 0));
-console.log(factorial(3));
+function fibonacci(x) {
+	if (x < 0) {
+		return (-1);
+    }
+	if (x == 0) {
+		return (0);
+    }
+	if (x == 1) {
+		return (1);
+    }
+	return (fibonacci(x - 1) + fibonacci(x - 2));
+}
+
+const nbrs_tab = [1, 2, 3];
+console.log("step 1 - iterative sum\nResult with [1, 2, 3] array = " + sum1(nbrs_tab))
+console.log("step 2 - recursive sum\nResult with [1, 2, 3] array = " + sum2(nbrs_tab, 0));
+console.log("step 3 - recursive factorial\nResult (with n=3) = " + factorial(3));
+console.log("step 4 - fibonacci recursive\nresult (with x=5) = " + fibonacci(7));
