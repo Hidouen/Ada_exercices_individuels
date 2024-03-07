@@ -1,3 +1,4 @@
+// Step 1: Iterative function to sum numbers from an array
 function sum1(tab) {
     let result = 0;
     if (!Array.isArray(tab)) {
@@ -9,6 +10,7 @@ function sum1(tab) {
     return result;
 }
 
+// Step 1: Recursive function to sum numbers from an array
 function sum2(tab) {
     if (!Array.isArray(tab)) {
         return tab;
@@ -19,6 +21,7 @@ function sum2(tab) {
     return tab[0] + sum2(tab.slice(1));
 }
 
+// Step 3: Recursive function to calculate factorial of a number
 function factorial(n) {
     if (n < 0 || isNaN(n)) {
         return 0;
@@ -29,6 +32,7 @@ function factorial(n) {
     return (n * factorial(n - 1));
 }
 
+// Step 4: Recursive function to solve Fibonacci sequence
 function fibonacci(x) {
     if (x <= 1 || isNaN(x)) {
         return x;
@@ -37,7 +41,7 @@ function fibonacci(x) {
 }
 
 const nbrs_tab = [1, 2, 3];
-console.log("step 1 - iterative sum\nResult with [1, 2, 3] array = " + sum1(nbrs_tab))
-console.log("step 2 - recursive sum\nResult with [1, 2, 3] array = " + sum2(nbrs_tab));
-console.log("step 3 - recursive factorial\nResult (with n=3) = " + factorial(3));
-console.log("step 4 - fibonacci recursive\nresult (with x=5) = " + fibonacci(7));
+console.log("step 1 - Iterative sum\nResult (with [1, 2, 3] array) = " + sum1(nbrs_tab))
+console.log("step 2 - Recursive sum\nResult (with [1, 2, 3] array) = " + sum2(nbrs_tab));
+console.log("step 3 - Recursive factorial\nResult (with n=3) = " + factorial(3));
+console.log("step 4 - Recursive Fibonacci sequence\nResult (with x=5) = " + fibonacci(7));
