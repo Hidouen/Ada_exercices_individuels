@@ -6,5 +6,16 @@ function sum1(tab) {
     return result;
 }
 
-const nbrs_tab = [54, 85, 100024];
-console.log(sum1(nbrs_tab));
+function sum2(tab, i) {
+    let result = 0;
+    if (i < tab.length) {
+        result = tab[i] + sum2(tab, i + 1);
+    }
+    else {
+        return result;
+    }
+
+    return result;
+}
+const nbrs_tab = [1, 2, 7];
+console.log(sum2(nbrs_tab, 0));
