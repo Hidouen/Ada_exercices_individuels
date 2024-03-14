@@ -10,7 +10,7 @@ function sum1(tab) {
     return result;
 }
 
-// Step 1: Recursive function to sum numbers from an array
+// Step 2: Recursive function to sum numbers from an array
 function sum2(tab) {
     if (!Array.isArray(tab)) {
         return tab;
