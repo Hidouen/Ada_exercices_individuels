@@ -40,7 +40,30 @@ function isValidDate(dateString) {
     // If all checks pass, the date is valid
     return true;
 }
+const falseDate1 = "30/02/2024";
+const falseDate2 = "29/02/2025";
+const trueDate1 = "29/02/2028";
+console.log(falseDate1 + " is a valid date : " + isValidDate(falseDate1));
+console.log(falseDate2 + " is a valid date : " + isValidDate(falseDate2));
+console.log(trueDate1 + " is a valid date : " + isValidDate(trueDate1));
 
-console.log("30/02/2024 is a valid date : " + isValidDate("30/02/2024"));
-console.log("29/02/2025 is a valid date : " + isValidDate("29/02/2025"));
-console.log("29/02/2028 is a valid date : " + isValidDate("29/02/2028"));
+// Step 2
+function isPalindrome(dateString) {
+
+    // check if the date is realistic with the right format
+    if (!isValidDate(dateString)) {
+        return false;
+    }
+
+    const dateWithoutSlash = dateString.replace(/\//g, '');
+
+    // Check if the date string is equal to its reverse
+    return dateWithoutSlash === dateWithoutSlash.split('').reverse().join('');
+}
+
+const falseDate3 = "29/02/2029";
+const falsePalindrome = "28/02/2028";
+const truePalindrome = "11/02/2011";
+console.log(falseDate3 + " is a valid date and a palindrome : " + isPalindrome(falseDate3));
+console.log(falsePalindrome + " is a valid date and a palindrome : " + isPalindrome(falsePalindrome));
+console.log(truePalindrome + " is a valid date and a palindrome : " + isPalindrome(truePalindrome));
