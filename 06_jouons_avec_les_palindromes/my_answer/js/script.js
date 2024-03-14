@@ -93,3 +93,29 @@ function getNextPalindromes(x) {
 console.log('\nStep 3 :');
 console.log('The 8 next dates from today that are palindromes :');
 console.log(getNextPalindromes(8));
+
+// Step 4
+function pimpedIsPalindrome(str) {
+    if (typeof str !== 'string') {
+        return false;
+    }
+    return str === str.split('').reverse().join('');
+}
+
+function isDatePalindrome(dateString) {
+    if (!isValidDate(dateString)) {
+        return false;
+    }
+    const dateWithoutSlash = dateString.replace(/\//g, '');
+    return pimpedIsPalindrome(dateWithoutSlash);
+}
+
+console.log('\nStep 4 :');
+const ex1 = "kayak";
+const ex2 = "bateau"
+const ex3 = "11/02/2011";
+const ex4 = "28/02/2802";
+console.log(ex1 + " is a palindrome : " + pimpedIsPalindrome(ex1));
+console.log(ex2 + " is a palindrome : " + pimpedIsPalindrome(ex2));
+console.log(ex3 + " is a date palindrome : " + isDatePalindrome(ex3));
+console.log(ex4 + " is a date palindrome : " + isDatePalindrome(ex4));
