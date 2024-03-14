@@ -49,4 +49,4 @@ getNextPalindromes(8)
 
 ## Étape 4
 
-Refactorer la fonction `isPalindrome` pour faire en sorte qu’elle renvoie si, ou non, une chaine de caractère est un palindrome. Créer ensuite une nouvelle fonction `isDatePalindrome` qui reprendra les spécificités du palindrome au format date (comme s’assurer que la date est valide) et qui appellera `isPalindrome`.
+Refactorer la fonction `pimpedIsPalindrome` pour faire en sorte qu’elle renvoie si, ou non, une chaine de caractère est un palindrome. Créer ensuite une nouvelle fonction `isDatePalindrome` qui reprendra les spécificités du palindrome au format date (comme s’assurer que la date est valide) et qui appellera `pimpedIsPalindrome`.

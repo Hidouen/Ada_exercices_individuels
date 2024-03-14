@@ -40,6 +40,8 @@ function isValidDate(dateString) {
     // If all checks pass, the date is valid
     return true;
 }
+
+console.log('Step 1 :');
 const falseDate1 = "30/02/2024";
 const falseDate2 = "29/02/2025";
 const trueDate1 = "29/02/2028";
@@ -61,9 +63,33 @@ function isPalindrome(dateString) {
     return dateWithoutSlash === dateWithoutSlash.split('').reverse().join('');
 }
 
+console.log('\nStep 2 :');
 const falseDate3 = "29/02/2029";
 const falsePalindrome = "28/02/2028";
 const truePalindrome = "11/02/2011";
 console.log(falseDate3 + " is a valid date and a palindrome : " + isPalindrome(falseDate3));
 console.log(falsePalindrome + " is a valid date and a palindrome : " + isPalindrome(falsePalindrome));
 console.log(truePalindrome + " is a valid date and a palindrome : " + isPalindrome(truePalindrome));
+
+// Step 3
+function getNextPalindromes(x) {
+    const today = new Date();
+    let foundPalindromes = [];
+    let currentDate = new Date(today);
+
+    while (foundPalindromes.length < x) {
+        // Parse date to the right format dd/mm/yyyy
+        const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+        // Check if the date is palindrome
+        if (isPalindrome(formattedDate)) {
+            foundPalindromes.push(formattedDate);
+        }
+        // check next day
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return foundPalindromes;
+}
+
+console.log('\nStep 3 :');
+console.log('The 8 next dates from today that are palindromes :');
+console.log(getNextPalindromes(8));
