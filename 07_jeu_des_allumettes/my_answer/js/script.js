@@ -27,6 +27,19 @@ function validAnswer(matchesToRemove) {
     return false;
 }
 
+function howManyPlayers() {
+    let players = 0;
+    while (players < 1) {
+        players = parseInt(prompt("How many players are you ?"));
+        if (isNaN(players)) {
+            alert("Error : Please a number of players");
+        }
+        else if (players < 1) {
+            alert("Error : at least 1 player is needed");
+        }
+    }
+    return players;
+}
 
 function launchGame() {
     let matchesHeap = 50;
@@ -34,8 +47,9 @@ function launchGame() {
     let answer;
     alert("Welcome to the Matches Game");
     alert("The Matches Game starts with a heap of 50 matches. Each one his turn, 2 players remove between 1 to 6 matches from the heap. The one who removes the last match wins the game.");
+    let players = howManyPlayers();
     while (matchesHeap > 0) {
-        if (player > 1) {
+        if (player >= players) {
             player = 0;
         }
         answer = askPlayer(player + 1);
